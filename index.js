@@ -42,21 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Custom cursor
-    const cursor = document.querySelector('.cursor');
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.pageX + 'px';
-        cursor.style.top = e.pageY + 'px';
-    });
-    
-    document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '1';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-    });
+    // Removed cursor-related code
     
     // Animate skill bars on scroll
     const skillBars = document.querySelectorAll('.skill-progress');
