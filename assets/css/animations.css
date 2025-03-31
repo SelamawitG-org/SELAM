@@ -1,0 +1,66 @@
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+/* Slide Up */
+@keyframes slideUp {
+  from { 
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to { 
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Animations */
+[data-animation="stagger"] > * {
+  opacity: 0;
+  animation: slideUp 0.6s forwards;
+}
+
+[data-animation="stagger"] > *:nth-child(1) { animation-delay: 0.1s; }
+[data-animation="stagger"] > *:nth-child(2) { animation-delay: 0.2s; }
+[data-animation="stagger"] > *:nth-child(3) { animation-delay: 0.3s; }
+[data-animation="stagger"] > *:nth-child(4) { animation-delay: 0.4s; }
+[data-animation="stagger"] > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Hover Effects */
+.hover-scale {
+  transition: transform var(--transition-normal);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
