@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same header as works.html -->
+    <style>
+           * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+         nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #bfbf49;
+        }
+
+        .agency-btn {
+            background: #000;
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .agency-btn:hover {
+            background: #a68a64;
+        }
+
+
+        nav img {
+            width: 100px;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #000;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                transition: all 0.3s ease;
+                padding: 2rem 0;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+          
+
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .titles {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            nav img {
+                width: 80px;
+            }
+        }
+        .certificate-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+
+        .certificate-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certificate-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="assets/imgs/Logo.png" alt="Logo">
+        <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="Work.html">Work</a>
+            <a href="#">about</a>
+            <a href="#">contact</a>
+            <a href="#" class="agency-btn">Agency</a>
+        </div>
+    </nav>
+    
+    <div class="certificate-gallery">
+        <div class="certificate-item">
+            <img src="assets/certs/cert1.jpg" alt="Certificate 1">
+        </div>
+        <!-- Add more certificates -->
+    </div>
+
+    <!-- Same footer -->
+</body>
+</html>

@@ -31,50 +31,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-    
-    // Removed cursor-related code
-    
-    // Animate skill bars on scroll
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    function animateSkillBars() {
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
+    // Animate elements on scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.animate-text, .service-card, .qualification-item, .testimonial-card');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
             
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
-        });
-    }
-    
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (entry.target.classList.contains('skills')) {
-                    animateSkillBars();
-                }
-                entry.target.classList.add('animated');
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    };
     
-    document.querySelectorAll('.skills, .work-item, .about-image').forEach(section => {
-        observer.observe(section);
-    });
+    // Initial animation check
+    animateOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', animateOnScroll);
 });

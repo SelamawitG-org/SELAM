@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Selamawit</title>
+  <style>
+    * {
+      margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+    }
+    
+
+    nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #bfbf49;
+        }
+
+        .agency-btn {
+            background: #000;
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .agency-btn:hover {
+            background: #a68a64;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 5%;
+        }
+
+        .hero-text {
+            max-width: 45%;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .titles {
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+
+        .see-more {
+            background: #000;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .see-more:hover {
+            background: #a68a64;
+            transform: scale(1.05);
+        }
+
+        .hero-image {
+            width: 45%;
+            height: 500px;
+            border-radius: 15px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+        }
+
+        nav img {
+            width: 100px;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #000;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                transition: all 0.3s ease;
+                padding: 2rem 0;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                padding: 2rem 5%;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 400px;
+            }
+
+            .titles {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .titles {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            nav img {
+                width: 80px;
+            }
+        }
+        footer {
+            background: #000000;
+            color: white;
+            padding: 4rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #a68a64;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #a68a64;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #a68a64;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid #ffffff;
+        }
+
+    /* VIDEO HERO */
+    .about-hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+
+     
+    }
+
+    #about-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    .hero-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* CONTENT SECTIONS */
+    .content-section {
+      padding: 6rem 5%;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .image-circle {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+    
+     
+      overflow: hidden;
+      
+      margin: 0 auto;
+    }
+
+    .image-circle img {
+      width: 50;
+      margin-left: 15%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .text-content {
+      flex: 1;
+      max-width: 600px;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.6s ease-out;
+    }
+
+    .content-section.in-view .text-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .content-section.alternate .image-circle {
+      order: 1;
+      
+      
+      margin-left: auto;
+    }
+    .content-section.alternate .text-content {
+      order: 1;
+      
+      
+      margin-left: auto;
+    }
+
+    .pillars-section {
+      padding: 6rem 5%;
+      background: #000000;
+    }
+
+    .pillar-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pillar {
+      width: 250px;
+      background: white;
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      margin-top: -180px;
+    }
+
+    .pillar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pillar.middle {
+      height: 400px;
+      margin-top: -300px;
+    }
+
+    .pillar:not(.middle) {
+      height: 300px;
+    }
+
+    .final-section {
+      text-align: center;
+      padding: 6rem 5%;
+      background: #000000;
+      color: white;
+      min-height: 50vh;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .content-section {
+        flex-direction: column;
+        padding: 4rem 5%;
+        text-align: center;
+      }
+
+      .image-circle {
+        width: 250px;
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+      }
+
+      .text-content {
+        transform: translateY(50px);
+        opacity: 0;
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+      }
+
+      .content-section.in-view .text-content {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .content-section.alternate .image-circle {
+        order: unset;
+        margin-left: 0;
+      }
+
+      .pillar-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pillar {
+        width: 90%;
+        height: 250px !important;
+        margin-top: 1.5rem !important;
+      }
+
+      .pillar.middle {
+        margin-top: 1.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="assets/imgs/Logo.png" alt="Logo">
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="Work.html">Work</a>
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+        <a href="agency.selamawit.org" class="agency-btn">Agency</a>
+    </div>
+</nav>
+  <section class="about-hero">
+    <video id="about-video" autoplay muted loop playsinline>
+      <source src="assets/vid/bg.mp4" type="video/mp4" />
+    </video>
+    <h1 class="hero-title">My History</h1>
+  </section>
+
+  <section class="content-section">
+    <div class="image-circle">
+      <img src="assets/imgs/me.png" />
+    </div>
+    <div class="text-content">
+      <p>Hi am Selamawit <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. At odit ratione commodi voluptatibus dolor dolores non accusamus, unde inventore quaerat? Odit similique modi, sit autem dolorum debitis culpa nihil dolor.</p>
+    </div>
+  </section>
+
+  <section class="content-section alternate">
+    <div class="image-circle">
+      <img src="assets/imgs/Hus.png" />
+    </div>
+    <div class="text-content">
+      <h2>My right hand</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae culpa sed veniam aperiam eos ipsam, tenetur labore temporibus nostrum vel officia repellat earum exercitationem numquam aliquam nisi quas reiciendis voluptatem!</p>
+    </div>
+  </section>
+
+  <section class="pillars-section">
+    <h2 style="color: white; text-align: center">People I Respect</h2>
+    <div class="pillar-container">
+      <div class="pillar"><img src="assets/pillar1.jpg" alt="" /></div>
+      <div class="pillar middle"><img src="assets/imgs/hero-bg.jpg" alt="" /></div>
+      <div class="pillar"><img src="assets/imgs/download (2).jpeg" alt="" /></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="image-circle">
+      <img src="assets/img3.jpg" />
+    </div>
+    <div class="text-content">
+      <p>...section text...</p>
+    </div>
+  </section>
+
+  <section class="content-section alternate">
+    <div class="image-circle">
+      <img src="assets/img4.jpg" />
+    </div>
+    <div class="text-content">
+      <p>...section text...</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="image-circle">
+      <img src="assets/img5.jpg" />
+    </div>
+    <div class="text-content">
+      <p>...section text...</p>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+                <li>Email: contact@selamawit.com</li>
+                <li>Phone: +251 912 345 678</li>
+                <li>Addis Ababa, Ethiopia</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="cert.html">Certificates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Selamawit. All rights reserved | Professional Portfolio</p>
+    </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.content-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('nav') && !event.target.closest('.nav-links')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+  </script>
+</body>
+</html>
