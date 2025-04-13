@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <style>
+    body {
+      background: #ffffff;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    #login-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #login-screen input {
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background-color: black;
+      color: white;
+    }
+
+    #admin-panel {
+      display: none;
+      color: black;
+        
+    }
+
+    .entry {
+      background: #1a1a1a;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .entry small {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <input type="password" id="admin-password" placeholder="Enter admin password" />
+</div>
+
+<div id="admin-panel">
+  <h2>📨 Contact Submissions</h2>
+  <div id="messages">Loading...</div>
+</div>
+
+<script>
+  const PASSWORD = "admin123"; // Change this to your password
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/1KtQGy_vM4ibWR8ByLIRBj83gB3agfhjxZ1fvs55hgS4/export?format=csv"; // Replace with your sheet's public CSV link
+
+  document.getElementById("admin-password").addEventListener("keyup", async function(e) {
+    if (e.key === "Enter") {
+      if (this.value === PASSWORD) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("admin-panel").style.display = "block";
+        loadMessages();
+      } else {
+        alert("Wrong password");
+        this.value = "";
+      }
+    }
+  });
+
+  async function loadMessages() {
+    const res = await fetch(CSV_URL);
+    const text = await res.text();
+    const rows = text.trim().split("\n").slice(1); // skip header
+
+    const messages = rows.map(row => {
+      const [name, email, message, date] = row.split(",");
+      return `<div class="entry">
+        <strong>Name:</strong> ${name}<br/>
+        <strong>Email:</strong> ${email}<br/>
+        <strong>Message:</strong> ${message}<br/>
+        <small>${date}</small>
+      </div>`;
+    }).join("");
+
+    document.getElementById("messages").innerHTML = messages || "<p>No messages yet.</p>";
+  }
+</script>
+
+</body>
+</html>
